@@ -1,3 +1,4 @@
+//@ modiied by Tomcruseal at 2019.1.9
 import com.typesafe.sbt.pgp.PgpKeys.publishSigned
 import com.typesafe.sbt.SbtSite.SiteKeys._
 import ReleaseTransformations._
@@ -7,24 +8,26 @@ import ReleaseTransformations._
 // TODO scoverage, noPublishSettings, release plugin
 // TODO minimum sbt version
 
-lazy val spireVersion = "0.14.1"
-lazy val shapelessVersion = "2.3.2"
+lazy val spireVersion = "0.16.0"
+lazy val shapelessVersion = "2.3.3"
 lazy val kittensVersion = "1.0.0-RC2"
 //lazy val catsVersion = "0.9.0" // match spire's algebra's catsVersion (and monix)
-lazy val catsVersion = "1.0.1"
+lazy val catsVersion = "1.5.0"
 
-lazy val disciplineVersion = "0.7.2"
-lazy val scalaCheckVersion = "1.13.4"
-lazy val scalaTestVersion = "3.0.0"
+lazy val disciplineVersion = "0.10.0"
+lazy val scalaCheckVersion = "1.13.4"    //automated property-based testing @kim
+lazy val scalaTestVersion = "3.0.5"
 
-lazy val scalaXmlVersion = "1.0.5"
+lazy val scalaXmlVersion = "1.1.1"
 lazy val scalaParserCombinatorsVersion = "1.0.4"
-lazy val jungVersion = "2.1"
+lazy val jungVersion = "2.1.1"
+//lazy val vegasVersion = "0.3.11" 
 lazy val jblasVersion = "1.2.4"
-lazy val jacksonVersion = "2.8.4"
-lazy val jodaTimeVersion = "2.9.4"
-lazy val jodaConvertVersion = "1.8.1"
-lazy val monixVersion = "3.0.0-M3"
+//lazy val breeze = 0.11.2 @kim
+lazy val jacksonVersion = "2.8.4"    //Fast JSON processor 
+lazy val jodaTimeVersion = "2.10.1"    //java data and time
+lazy val jodaConvertVersion = "2.1.2"
+lazy val monixVersion = "3.0.0-RC2"
 lazy val jogampVersion = "2.3.2"
 
 lazy val scoverageSettings = Seq(
@@ -33,14 +36,14 @@ lazy val scoverageSettings = Seq(
   coverageHighlighting := true
 )
 
-scalaVersion := "2.12.3"
+scalaVersion := "2.12.8"
 //scalaVersion := "2.11.8"
 
 lazy val buildSettings = Seq(
   organization := "org.axle-lang",
-  scalaVersion := "2.12.3",
+  scalaVersion := "2.12.8",
   // scalaOrganization := "org.typelevel",
-  crossScalaVersions := Seq("2.12.3")
+  crossScalaVersions := Seq("2.12.8")
 )
 
 lazy val axleDoctestSettings = Seq(
@@ -180,7 +183,7 @@ lazy val docs = Project("axle-docs", file("axle-docs"))
   //.settings(site.addMappingsToSiteDir(tut, "tut"))
   .settings(
     autoAPIMappings := true,
-    git.remoteRepo := "git@github.com:axlelang/axle.git",
+    git.remoteRepo := "git@github.com:Tomcruseal/axle.git",
     includeFilter in makeSite := "*.html" | "*.css" | "*.png" | "*.jpg" | "*.gif" | "*.js" | "*.swf" | "*.yml" | "*.md"
   )
   .settings(commonJvmSettings)
